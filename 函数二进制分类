@@ -1,0 +1,40 @@
+#include <stdio.h>
+unsigned long long int erjin(long long int n) {
+    unsigned long long int m = 0;
+    unsigned long long int x = 1;
+    while (n > 0) {
+        int k = n % 2;
+        m += k * x;
+        x *= 10;
+        n /= 2;
+    }
+    return m;
+}
+int zero(unsigned long long int m) {
+    int a = 0, b = 0;
+    while (m > 0) {
+        int digit = m % 10;
+        if (digit == 1) {
+            a++;
+        } else {
+            b++;
+        }
+        m /= 10;
+    }
+    return a > b;
+}
+int main() {
+    long long int n, m;
+    scanf("%lld%lld", &n, &m);
+    int a = 0, b = 0;
+    for (long long int i = n; i <= m; i++) {
+        unsigned long long int x = erjin(i);
+        if (zero(x) == 1) {
+            a++;
+        } else {
+            b++;
+        }
+    }
+    printf("%d %d\n", a, b);
+    return 0;
+}
