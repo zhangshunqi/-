@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+    int a, b, n, m, x;
+    int num[32];
+    while (scanf("%d", &n) == 1) {
+        m = n;
+        if(m==0)
+            printf("0\n");
+        else{
+            int v=0;
+            while (m!= 0) {
+                x = m % 2;
+                m = m / 2;
+                v++;
+            }  
+            b = n;
+            int i=0;
+            while (b!=0) {
+                a = b % 2;
+                num[i]=a;
+                b = b/2;
+                i++;
+            }
+            int j;
+            for(j=v-1;j>=0;j--){
+                printf("%d", num[j]);
+            }
+            printf("\n");
+        }
+    }
+    return 0;
+}
