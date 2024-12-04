@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <math.h>
+int main() {
+    int n;
+    scanf("%d", &n);
+    for (int i = 3; i <= n / 2; i += 2) {
+        int j = n - i;
+        int t = 1;
+        if (i > 2 && i % 2 == 0) {
+            t = 0;
+        }
+        else {
+            for (int k = 3; k <= (int)sqrt(i); k += 2) {
+                if (i % k == 0) {
+                    t = 0;
+                    break;
+                }
+            }
+        }
+        int p = 1;
+        if (j > 2 && j % 2 == 0) {
+            p = 0;
+        }
+        else {
+            for (int k = 3; k <= (int)sqrt(j); k += 2) {
+                if (j % k == 0) {
+                    p = 0;
+                    break;
+                }
+            }
+        }
+        if (t && p && i!= j) {
+            printf("%d=%d+%d\n", n, i, j);
+        }
+    }
+    return 0;
+}
