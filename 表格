@@ -1,0 +1,47 @@
+#include <stdio.h>
+int main() {
+    int repeat;
+    scanf("%d", &repeat);
+    while (repeat--) {
+        int n;
+        int num[5] = {0};
+        scanf("%d", &n);
+        for (int i = 0; i < n; i++) {
+            int b;
+            scanf("%d", &b);
+            num[b - 1]++;
+        }
+        int a = 0;
+        for (int i = 0; i < 5; i++) {
+            if (num[i] > a) {
+                a = num[i];
+            }
+        }
+        for (int i = a; i > 0; i--) {
+            int t = -1;
+            int p = 0;
+            for (int j = 0; j < 5; j++) {
+                if (num[j] >= i) {
+                    if (!p) {
+                        printf("*");
+                        t = j;
+                        p = 1;
+                    } else {
+                        printf(" *");
+                    }
+                } else {
+                    if (!p) {
+                        printf("  ");
+                    } else {
+                        if (j < 4 && (num[j + 1] >= i || num[j + 1] == 0)) {
+                            printf(" ");
+                        }
+                    }
+                }
+            }
+            printf("\n");
+        }
+        printf("1 2 3 4 5\n");
+    }
+    return 0;
+}
