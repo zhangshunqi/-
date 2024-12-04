@@ -1,0 +1,41 @@
+#include<stdio.h>
+int diy(int i, int j, int c){
+    int day = 0;
+    if((i % 4 == 0 && i % 100!= 0) || (i % 400 == 0)){
+        for(int a=1;a<j;a++){
+            if(a==2){
+                day+=29;
+            }
+            else if(a == 4 || a == 6 || a == 9 || a == 11){
+                day+=30;
+            }
+            else {
+                day+=31;
+            }
+        }
+        day+=c;
+    }
+    else {
+        for(int b=1;b<j;b++){
+            if(b==2){
+                day+=28;
+            }
+            else if(b == 4 || b == 6 || b == 9 || b == 11){
+                day+=30;
+            }
+            else {
+                day+=31;
+            }
+        }
+        day+=c;
+    }
+    return day;
+}
+int main(){
+    int a, b, c, d, e, n, m;
+    scanf("%d %d %d %d %d", &a, &b, &c, &d, &e);
+    n=diy(a, b, c);
+    m=diy(a, d, e);
+    printf("%d", m-n);
+    return 0;
+}
