@@ -1,0 +1,45 @@
+#include <stdio.h>
+int main() {
+    int a, b, c, d;
+    char op;
+    while (scanf("%d/%d%c%d/%d", &a, &b, &op, &c, &d) == 5) {
+        int e = 0, f = 0;
+        int m = 0, n = 0, p = 0;
+        switch (op) {
+        case '+':
+            e = (a * d + b * c);
+            f = b * d;
+            break;
+        case '-':
+            e = (a * d - b * c);
+            f = b * d;
+            break;
+        }
+        m = e;
+        n = f;
+        while (n!= 0) {
+            p = m % n;
+            m = n;
+            n = p;
+        }
+        e = e / m;
+        f = f / m;
+        if (e % f == 0) {
+            printf("%d\n", e / f);
+        } else {
+            if(e>0&&f>0){
+                printf("%d/%d\n", e, f);
+            }
+            if(e<0&&f<0){
+                printf("%d/%d\n", -e, -f);
+            }
+            if(e<0&&f>0){
+                printf("-%d/%d\n", -e, f);
+            }
+            if(e>0&&f<0){
+                printf("-%d/%d\n", e, -f);
+            }
+        }
+    }
+    return 0;
+}
