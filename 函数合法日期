@@ -1,0 +1,56 @@
+#include<stdio.h>
+int year(int i){
+    if((i % 4 == 0 && i % 100!= 0) || (i % 400 == 0)){
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}
+int month(int j){
+    if(j==2){
+        return 2;
+    }
+    if(j>12){
+        return 3;
+    }
+    if(j == 4 || j == 6 || j == 9 || j == 11){
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}
+int main(){
+    int a, b, c;
+    scanf("%d %d %d", &a, &b, &c);
+    if(year(a)==1){
+        if(month(b)==2&&c<=29){
+            printf("YES");
+        }
+        else if(month(b)==1&&c<=30){
+            printf("YES");
+        }
+        else if(month(b)==0&&c<=31){
+            printf("YES");
+        }
+        else {
+            printf("NO");
+        }
+    }
+    else {
+        if(month(b)==2&&c<=28){
+            printf("YES");
+        }
+        else if(month(b)==1&&c<=30){
+            printf("YES");
+        }
+        else if(month(b)==0&&c<=31){
+            printf("YES");
+        }
+        else {
+            printf("NO");
+        }
+    }
+    return 0;
+}
