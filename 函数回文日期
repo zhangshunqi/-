@@ -1,0 +1,68 @@
+#include<stdio.h>
+int huiwen(int n){
+    int day = n;
+    int year, month, num=0, bum=0;
+    year = day/10000;
+    month = (day-(day/10000)*10000)/100;
+    day= day%100;
+    if ((year % 4 == 0 && year % 100!= 0) || (year % 400 == 0)){
+        if(month<=12){
+            if((month==4||month==6||month==9||month==11)&&(day<=30)){
+                bum = 1;
+            }
+            else if(month==2&&month<=29){
+                bum = 1;
+            }
+            else if ((month==1||month==3||month==5||month==7||month==8||month==10||month==12)&&(day<=31)){
+                bum = 1;
+            }
+            else {
+                bum = 0;
+            }
+        }
+        else {
+            bum = 0;
+        }
+    }
+    else {
+        if(month<=12){
+            if((month==4||month==6||month==9||month==11)&&(day<=30)){
+                bum = 1;
+            }
+            else if(month==2&&month<=28){
+                bum = 1;
+            }
+            else if ((month==1||month==3||month==5||month==7||month==8||month==10||month==12)&&(day<=31)){
+                bum = 1;
+            }
+            else {
+                bum = 0;
+            }
+        }
+        else {
+            bum = 0;
+        }
+    }
+    if(bum == 1){
+        int m = n, a=0;
+        do{
+            a = a*10+m%10;
+            m = m/10;
+        }while(m > 0);
+        if(a == n){
+            printf("YES");
+        }
+        else{
+            printf("NO");
+        }
+    }
+    else {
+        printf("NO");
+    }
+}
+int main(){
+    int n;
+    scanf("%d", &n);
+    huiwen(n);
+    return 0;
+}
