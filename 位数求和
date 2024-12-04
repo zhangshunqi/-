@@ -1,0 +1,25 @@
+#include<stdio.h>
+int main()
+{
+    long long n;
+    int a;
+    scanf("%lld", &n);
+    while(1){
+        a=0;
+        int m;
+        while(n>0){
+            m=n%10;
+            n/=10;
+            a+=m;
+        }
+        if(a<=9){
+            break;
+        }
+        else {
+            n=a;
+            continue;
+        }
+    }
+    printf("%d", a);
+    return 0;
+}
