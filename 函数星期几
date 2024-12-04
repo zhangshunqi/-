@@ -1,0 +1,75 @@
+#include <stdio.h> 
+int getWeek(int day)
+{
+	int year, month, num=0, bum=0;
+    year = day/10000;
+    month = (day-(day/10000)*10000)/100;
+    day= day%100;
+    if ((year % 4 == 0 && year % 100!= 0) || (year % 400 == 0)){
+        bum=1;
+    }
+    for(int i = 1;i<year;i++){
+        if ((i % 4 == 0 && i % 100!= 0) || (i % 400 == 0)){
+            num+=366;
+        }
+        else {
+            num+=365;
+        }
+    }
+    for (int j = 1; j < month; j++) {
+        if(bum==1){
+            if(j==2){
+                num+=29;
+            }
+            else {
+                num += (j == 4 || j == 6 || j == 9 || j == 11)? 30 : 31;
+            }
+        }
+        if(bum==0){
+            if(j==2){
+                num+=28;
+            }
+            else {
+                num += (j == 4 || j == 6 || j == 9 || j == 11)? 30 : 31;
+            }
+        }
+    }
+    num+=day;
+    return num%7;
+}
+
+void printWeek(int w)
+{
+	/**********Begin**********/
+	switch (w) {
+        case 1:
+            printf("Mon");
+            break;
+        case 2:
+            printf("Tue");
+            break;
+        case 3:
+            printf("Wed");
+            break;
+        case 4:
+            printf("Thu");
+            break;
+        case 5:
+            printf("Fri");
+            break;
+        case 6:
+            printf("Sat");
+            break;
+        case 0:
+            printf("Sun");
+            break;
+    }
+}
+int main()
+{
+    int date;
+   scanf("%d",&date);
+   int week = getWeek(date);
+   printWeek(week);
+	return 0;
+}
