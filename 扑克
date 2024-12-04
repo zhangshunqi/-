@@ -1,0 +1,95 @@
+#include<stdio.h>
+#include<math.h>
+int main(){
+    int num, a, c, e;
+    char b, d, f;
+    scanf("%d", &num);
+    while(scanf("%d%c %d%c %d%c\n", &a,&b,&c,&d,&e,&f)==6){
+        int o = a;
+        int p = c;
+        int q = e;
+        int temp;
+        if (q > p) {
+            temp = o;
+            o = p;
+            p = temp;
+        }
+        if (o > q) {
+            temp = o;
+            o = q;
+            q = temp;
+        }
+        if (p > q) {
+            temp = p;
+            p = q;
+            q = temp;
+        }
+        if(a==c&&c==e){
+
+            switch(q){
+                case 11:printf("Leopard J\n");break;
+                case 12:printf("Leopard Q\n");break;
+                case 13:printf("Leopard K\n");break;
+                case 14:printf("Leopard A\n");break;
+                default:printf("Leopard %d\n", q);
+            }
+        }
+        else if(((q-p==1)&&(p-o==1))&&(b==d&&d==f)){
+            switch(q){
+                case 11:printf("Flush straight J\n");break;
+                case 12:printf("Flush straight Q\n");break;
+                case 13:printf("Flush straight K\n");break;
+                case 14:printf("Flush straight A\n");break;
+                default:printf("Flush straight %d\n", q);
+            }
+        }
+        else if((((q-p==1)&&(p-o==1)))&&(!(b==d&&d==f))){
+            switch(q){
+                case 11:printf("Straight J\n");break;
+                case 12:printf("Straight Q\n");break;
+                case 13:printf("Straight K\n");break;
+                case 14:printf("Straight A\n");break;
+                default:printf("Straight %d\n", q);
+            }
+        }
+        else if(b==d&&d==f&&(!(a==c&&c==e))&&(!(((q-p==1)&&(p-o==1))))){
+            switch(q){
+                case 11:printf("Same kind J\n");break;
+                case 12:printf("Same kind Q\n");break;
+                case 13:printf("Same kind K\n");break;
+                case 14:printf("Same kind A\n");break;
+                default:printf("Same kind %d\n", q);
+            }
+        }
+        else if((a==c||c==e||e==a)&&(!(b==d&&d==f))){
+            int max = a;
+            if (a==c){
+                max = c;
+            }
+            if (c==e){
+                max = e;
+            }
+            if (e==a){
+                max = a;
+            }
+            switch(max){
+                case 11:printf("Pair J\n");break;
+                case 12:printf("Pair Q\n");break;
+                case 13:printf("Pair K\n");break;
+                case 14:printf("Pair A\n");break;
+                default:printf("Pair %d\n", max);
+            }
+        }
+        else if((!(b==d&&d==f))&&(a!=c&&c!=e&&e!=a)){
+            switch(q){
+                case 11:printf("General J\n");break;
+                case 12:printf("General Q\n");break;
+                case 13:printf("General K\n");break;
+                case 14:printf("General A\n");break;
+                default:printf("General %d\n", q);
+            }
+        }
+        else;
+    }
+    return 0;
+}
