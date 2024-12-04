@@ -1,0 +1,24 @@
+#include<stdio.h>
+int main(){
+    int num, a, b;
+    scanf("%d", &num);
+    for(int i=0;i<num;i++){
+        while(scanf("%d %d\n", &a, &b)==2){
+            int n=0, k=0;
+            int p=a;
+            while(p%10==0){
+                n++;
+                p/=10;
+            }
+            while (p > 0) {
+                k = k * 10 + p % 10;
+                p /= 10;
+            }
+            for(int j=0;j<n;j++){
+                k*=10;
+            }
+            printf("%d\n", k*b);
+        }
+    }
+    return 0;
+}
