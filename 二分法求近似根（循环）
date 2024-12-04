@@ -1,0 +1,20 @@
+#include<stdio.h>
+#include<math.h>
+int main(){
+    double n, x, y;
+    double a=0, b=2, c;
+    scanf("%lf", &n);
+    do{
+        x = (a+b)/2;
+        y = x*x*x*x*x-2*x*x*x*x+x*x-3;
+        c = a*a*a*a*a-2*a*a*a*a+a*a-3;
+        if(c*y>0){
+            a=x;
+        }
+        else {
+            b=x;
+        }
+    }while((fabs(y))>=n);
+    printf("%.8f", x);
+    return 0;
+}
